@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>プロフィール - 宋暁偉</title>
+  <style>
+    /* 全体のスタイル */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ヘッダー */
+    header {
+      background-color: #4f46e5;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    /* メインコンテンツ */
+    main {
+      padding: 2rem;
+    }
+
+    /* セクション共通スタイル */
+    section {
+      margin-bottom: 2rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    /* スキル一覧のスタイル */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* スキルバッジのスタイルとアニメーション */
+    .skill {
+      background: #e0e7ff;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* 各スキルのアニメーション遅延 */
+    .skill:nth-child(1) { animation-delay: 0.2s; }
+    .skill:nth-child(2) { animation-delay: 0.4s; }
+    .skill:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+
+    /* ボタンのスタイル */
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    /* ダークモード対応スタイル */
+    .dark-mode {
+      background-color: #1f2937;
+      color: #f3f4f6;
+    }
+
+    .dark-mode section {
+      background-color: #374151;
+    }
+
+    .dark-mode .skill {
+      background-color: #4b5563;
+      color: #e5e7eb;
+    }
+
+    .dark-mode h2 {
+      color: #f3f4f6;
+    }
+
+    /* 連絡先のボックス */
+    .contact-info {
+      display: none;
+      margin-top: 1rem;
+      background-color: #f0f4ff;
+      padding: 1rem;
+      border-radius: 6px;
+    }
+
+    /* お問い合わせフォーム */
+    form {
+      background-color: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      max-width: 500px;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 0.8rem;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+    }
+
+    /* 送信完了メッセージ */
+    #submit-message {
+      margin-top: 1rem;
+      color: #10b981;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>宋 暁偉 | HTMLコーダー</h1>
+  </header>
+
+  <main>
+    <!-- 自己紹介セクション -->
+    <section>
+      <h2>自己紹介</h2>
+      <p>HTML、CSS、JavaScript の基礎をしっかり身につけており、コーディング時には常に可読性と保守性を意識しています。シンプルで分かりやすい構成を心がけ、レスポンシブ対応やユーザーの使いやすさも考慮して制作しています。</p>
+    </section>
+
+    <!-- 使用技術の紹介 -->
+    <section>
+      <h2>使用技術</h2>
+      <div class="skills-list">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+      </div>
+    </section>
+
+    <!-- インタラクティブなボタン -->
+    <section>
+      <h2>簡単なインタラクション</h2>
+      <button onclick="changeBackground()">背景色をランダムに変更</button>
+      <button onclick="toggleDarkMode()">ダークモードを切り替え</button>
+      <button onclick="goToGitHub()">GitHubを見る</button>
+    </section>
+
+    <!-- 連絡先情報 -->
+    <section>
+      <h2>連絡先情報</h2>
+      <button onclick="toggleContactInfo()">連絡先情報を表示/非表示</button>
+      <div class="contact-info" id="contact-info">
+        <p><strong>住所:</strong> 京都府京都市下京区若宮通五条上る布屋町83-2エムズフラッツ 302</p>
+        <p><strong>メール:</strong> songx9241@gmail.com</p>
+        <p><strong>電話番号:</strong> 080-3200-5866</p>
+      </div>
+    </section>
+
+    <!-- お問い合わせフォーム -->
+    <section>
+      <h2>お問い合わせ</h2>
+      <form onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="お名前" required />
+        <input type="email" placeholder="メールアドレス" required />
+        <textarea rows="5" placeholder="メッセージを入力してください" required></textarea>
+        <button type="submit">送信</button>
+      </form>
+      <p id="submit-message"></p>
+    </section>
+  </main>
+
+  <script>
+    // 背景色をランダムに変更する
+    function changeBackground() {
+      const colors = ["#fcd34d", "#fca5a5", "#6ee7b7", "#93c5fd", "#e9d5ff"];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.backgroundColor = randomColor;
+    }
+
+    // GitHubを新しいタブで開く
+    function goToGitHub() {
+      window.open('https://github.com/SXW-Coder/my-profile', '_blank');
+    }
+
+    // 連絡先の表示/非表示を切り替える
+    function toggleContactInfo() {
+      const contactInfo = document.getElementById('contact-info');
+      contactInfo.style.display = contactInfo.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // ダークモード切り替え
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // お問い合わせフォーム送信時の処理
+    function handleSubmit(event) {
+      event.preventDefault();
+      document.getElementById('submit-message').innerText = "送信ありがとうございました！";
+    }
+  </script>
+</body>
+</html>
